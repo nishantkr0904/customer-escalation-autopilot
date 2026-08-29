@@ -305,7 +305,7 @@ Build the incident list page (with filtering) and the incident detail page (full
 
 ---
 
-## Milestone 8: Workflow Visualization Page
+## Milestone 8: Workflow Visualization Page ✅
 
 ### Objective
 Build the workflow pipeline visualization — a visual representation of the incident processing pipeline with animated step progression.
@@ -327,14 +327,14 @@ Build the workflow pipeline visualization — a visual representation of the inc
 - Shows the most recent or selected incident's workflow
 
 ### Acceptance Criteria
-- [ ] Pipeline renders all 10 workflow steps in order
-- [ ] Each step shows: icon, name, status (color-coded), duration
-- [ ] Steps animate through states: pending (gray) → running (blue pulse) → completed (green) / failed (red)
-- [ ] Clicking a step expands to show: description, output, timing
-- [ ] Connectors between steps show flow direction
-- [ ] Live polling updates every 2 seconds during active workflows
-- [ ] Completed pipelines show total duration and success rate
-- [ ] "Run New Incident" button opens intake form
+- [x] Pipeline renders all 10 workflow steps in order
+- [x] Each step shows: icon, name, status (color-coded), duration
+- [x] Steps animate through states: pending (gray) → running (blue pulse) → completed (green) / failed (red)
+- [x] Clicking a step expands to show: description, output, timing
+- [x] Connectors between steps show flow direction
+- [x] Live polling updates every 2 seconds during active workflows
+- [x] Completed pipelines show total duration and success rate
+- [x] "Run New Incident" button opens intake form
 
 ### Estimated Time
 **2 hours**

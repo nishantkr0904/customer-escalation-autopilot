@@ -710,7 +710,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 37 — Build Workflow Pipeline View
+### Step 37 — Build Workflow Pipeline View ✅
 
 **Deliverables:**
 - `src/app/workflow/page.tsx`
