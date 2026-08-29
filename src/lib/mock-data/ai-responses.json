@@ -1,0 +1,132 @@
+[
+  {
+    "severity": "critical",
+    "confidence": 0.94,
+    "reasoning": "This incident warrants CRITICAL severity based on multiple converging factors: (1) The customer is an Enterprise account with $285K ACV and medium churn risk. (2) Batch payment processing failure directly blocks revenue processing. (3) Approximately 1,200 transactions are blocked, preventing end-of-month finance close. (4) Directly matches open GitHub issue #1847 regarding payment gateway connection pool exhaustion under high concurrency.",
+    "businessImpact": "Revenue-critical impact on Enterprise customer ($285K ACV). 1,200 transactions blocked. Finance team blocked on month-end close. Customer threatening VP-level escalation. High churn probability if unresolved.",
+    "technicalAssessment": "Batch payment processor timeout consistent with connection pool exhaustion under high concurrency (see issue #1847). Likely regression from recent deployment. Payment gateway adapter connection pooling needs immediate review.",
+    "recommendedActions": [
+      "Assign senior payment engineer immediately",
+      "Investigate connection pool settings in payment gateway adapter",
+      "Evaluate rollback of recent v2.14.3 release",
+      "Provide customer status update within 30 minutes",
+      "Prepare manual transaction processing fallback"
+    ],
+    "shouldEscalate": true,
+    "escalationReason": "Enterprise customer with CRITICAL business impact. Revenue-affecting issue with high churn risk. Related known issue suggests systemic bug.",
+    "executiveSummary": "Acme Corporation (Enterprise, $285K ACV) is experiencing batch payment processing failures affecting ~1,200 transactions. Their finance team is blocked on end-of-month close. Root cause likely related to known issue #1847. Immediate engineering attention required.",
+    "relatedIssueAnalysis": "Issue #1847 ('Batch payment processor timeout under high concurrency') is directly related. Opened 9 days ago, assigned to alex.kumar, labeled P1. Current incident matches symptoms exactly.",
+    "estimatedResolutionTime": "2-4 hours (if connection pool fix); 30 minutes (if rollback is viable)",
+    "riskFactors": [
+      "Enterprise customer with existing churn risk",
+      "Revenue-critical business function affected",
+      "Known related issue suggests systemic problem",
+      "End-of-month timing creates extreme urgency",
+      "Customer threatening executive escalation"
+    ],
+    "model": "gemini-3.7-flash",
+    "tokensUsed": 2847,
+    "latencyMs": 1230,
+    "analyzedAt": "2026-08-29T10:15:08Z"
+  },
+  {
+    "severity": "high",
+    "confidence": 0.88,
+    "reasoning": "High severity classification driven by: (1) Enterprise customer TechFlow Solutions ($180K ACV). (2) Severe API response latency exceeding 5 seconds on analytics endpoints, degrading operational dashboards for multiple users. (3) Matches GitHub issue #1852 regarding cache miss rate and filter parameter overhead.",
+    "businessImpact": "Operational degradation for Enterprise customer ($180K ACV). Dashboard responsiveness severely degraded across 850 employees. Low churn risk currently, but sustained latency threatens SLA compliance.",
+    "technicalAssessment": "API Gateway latency spikes on /v2/analytics/aggregate endpoint due to cache miss rate (42%) and high query complexity with >50 parameters. Matches active GitHub issue #1852.",
+    "recommendedActions": [
+      "Scale API Gateway worker instances dynamically",
+      "Flush and warm Redis cache layer for analytics queries",
+      "Assign API gateway team lead to optimize filter query parser",
+      "Notify customer account manager with ETA"
+    ],
+    "shouldEscalate": true,
+    "escalationReason": "Enterprise customer experiencing severe SLA degradation on core analytics pipeline. High AI confidence (0.88).",
+    "executiveSummary": "TechFlow Solutions (Enterprise, $180K ACV) experiencing severe API latency (>5s) on analytics endpoints. Root cause identified as query filter overhead and cache misses (Issue #1852). Mitigation in progress.",
+    "relatedIssueAnalysis": "Issue #1852 ('API Gateway latency spikes during analytics payload aggregation') matches query patterns. Assigned to maria.santos, P2 priority.",
+    "estimatedResolutionTime": "1-2 hours",
+    "riskFactors": [
+      "Enterprise customer SLA threshold breach",
+      "Broad user base affected across customer organization",
+      "Potential cascade to downstream reporting jobs"
+    ],
+    "model": "gemini-3.7-flash",
+    "tokensUsed": 2150,
+    "latencyMs": 980,
+    "analyzedAt": "2026-08-29T10:10:00Z"
+  },
+  {
+    "severity": "medium",
+    "confidence": 0.82,
+    "reasoning": "Medium severity classification: (1) SMB customer GrowthMetrics ($24K ACV) with HIGH churn risk and past_due billing status. (2) Data sync queue delays affecting CRM updates. (3) Matches GitHub issue #1812 regarding nested JSON array drop in CRM sync connector.",
+    "businessImpact": "GrowthMetrics ($24K ACV) experiencing CRM sync delays. Account has high churn risk and past due payment status. Resolution needed to prevent churn, but non-critical for core platform stability.",
+    "technicalAssessment": "Sync connector dropping contact updates when nested JSON payload exceeds 64KB limit. Related to issue #1812.",
+    "recommendedActions": [
+      "Increase buffer payload size limit on CRM sync adapter",
+      "Re-trigger failed sync queue batch",
+      "Coordinate with CS team regarding past due account status"
+    ],
+    "shouldEscalate": false,
+    "escalationReason": "SMB tier customer at Medium severity does not meet automatic escalation threshold unless upgraded by account risk rules.",
+    "executiveSummary": "GrowthMetrics (SMB, $24K ACV, High Churn Risk) experiencing CRM sync delays due to payload size limits (#1812). Standard support queue handling recommended.",
+    "relatedIssueAnalysis": "Issue #1812 ('Data synchronization pipeline dropping events') covers payload size overflow. Labeled P3.",
+    "estimatedResolutionTime": "4-6 hours",
+    "riskFactors": [
+      "High churn risk customer",
+      "Past due billing status requires coordination"
+    ],
+    "model": "gemini-3.7-flash",
+    "tokensUsed": 1820,
+    "latencyMs": 850,
+    "analyzedAt": "2026-08-29T09:45:00Z"
+  },
+  {
+    "severity": "low",
+    "confidence": 0.91,
+    "reasoning": "Low severity classification: (1) Startup tier customer DevStudio Pro ($6K ACV). (2) Feature request for CI/CD webhook HMAC signature support. (3) No system downtime or operational impact.",
+    "businessImpact": "Zero operational impact. Feature enhancement request for webhook security verification. Customer health is strong (82/100).",
+    "technicalAssessment": "Feature request for HMAC SHA-256 webhook signature verification in CI/CD integration pipeline. Related to issue #1865.",
+    "recommendedActions": [
+      "Link incident to product roadmap feature issue #1865",
+      "Inform customer contact of planned roadmap delivery timeline",
+      "Close support incident ticket with resolution notes"
+    ],
+    "shouldEscalate": false,
+    "escalationReason": "Low severity feature request on Startup tier account.",
+    "executiveSummary": "DevStudio Pro (Startup, $6K ACV) submitted a feature request for CI/CD webhook HMAC verification. Routed to product backlog (Issue #1865).",
+    "relatedIssueAnalysis": "Issue #1865 ('Request to add Webhook HMAC signature verification') covers this request. Labeled P4.",
+    "estimatedResolutionTime": "Roadmap item (Q3 feature release)",
+    "riskFactors": [
+      "None — zero churn risk, healthy account"
+    ],
+    "model": "gemini-3.7-flash",
+    "tokensUsed": 1240,
+    "latencyMs": 620,
+    "analyzedAt": "2026-08-29T08:30:00Z"
+  },
+  {
+    "severity": "medium",
+    "confidence": 0.75,
+    "reasoning": "Default fallback AI decision for unmatched incident descriptions. Classified as Medium severity pending context enrichment.",
+    "businessImpact": "General incident report under triage. Potential customer workflow disruption requiring investigation.",
+    "technicalAssessment": "Unspecified system component reporting anomalous behavior. Requires diagnostic enrichment.",
+    "recommendedActions": [
+      "Verify customer account details and contract tier",
+      "Run diagnostic check on integration health endpoints",
+      "Assign support tier 2 engineer for preliminary review"
+    ],
+    "shouldEscalate": false,
+    "escalationReason": "Default triage rule applies: Medium severity on unknown/standard customer tier holds in standard queue.",
+    "executiveSummary": "Incident received and pending detailed technical investigation. General support triage in progress.",
+    "relatedIssueAnalysis": "No direct GitHub issue matches found above 0.50 confidence threshold.",
+    "estimatedResolutionTime": "2-4 hours",
+    "riskFactors": [
+      "Unknown impact scope until diagnostic completes"
+    ],
+    "model": "gemini-3.7-flash",
+    "tokensUsed": 1100,
+    "latencyMs": 500,
+    "analyzedAt": "2026-08-29T10:00:00Z"
+  }
+]

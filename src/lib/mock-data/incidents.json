@@ -1,0 +1,1023 @@
+[
+  {
+    "id": "inc_01J9N2K4M6P8Q0R2",
+    "title": "Payment processing failing for enterprise batch operations",
+    "description": "Acme Corp reporting that their batch payment processing has been failing intermittently for the past 2 hours. Affecting approximately 1,200 transactions. Their finance team is unable to close end-of-month.",
+    "source": "slack",
+    "status": "escalated",
+    "severity": "critical",
+    "customerEmail": "ops@acmecorp.com",
+    "customer": {
+      "id": "cust_01H8K3M2N4P5Q6R7",
+      "email": "ops@acmecorp.com",
+      "name": "Acme Corporation",
+      "contactName": "Sarah Chen",
+      "tier": "enterprise",
+      "contractValue": 285000,
+      "employeeCount": 2400,
+      "industry": "Financial Services",
+      "region": "North America",
+      "accountManager": "James Rodriguez",
+      "healthScore": 72,
+      "churnRisk": "medium",
+      "openTickets": 3,
+      "lastContactDate": "2026-08-25T14:30:00Z",
+      "createdAt": "2024-03-15T09:00:00Z"
+    },
+    "billing": {
+      "customerId": "cust_01H8K3M2N4P5Q6R7",
+      "subscriptionStatus": "active",
+      "plan": "Enterprise Annual",
+      "mrr": 23750,
+      "totalSpend": 570000,
+      "lastPaymentDate": "2026-08-01T00:00:00Z",
+      "lastPaymentAmount": 23750,
+      "failedPayments": 0,
+      "paymentMethod": "card",
+      "billingEmail": "billing@acmecorp.com",
+      "nextInvoiceDate": "2026-09-01T00:00:00Z"
+    },
+    "relatedIssues": [
+      {
+        "id": "issue_101",
+        "number": 1847,
+        "title": "Batch payment processor timeout under high concurrency",
+        "state": "open",
+        "body": "When processing more than 500 concurrent payment requests, the batch processor times out after 30 seconds. This appears to be a connection pool exhaustion issue in the payment gateway adapter.",
+        "labels": ["bug", "payments", "P1", "backend"],
+        "assignee": "alex.kumar",
+        "repository": "platform-core",
+        "url": "https://github.com/company/platform-core/issues/1847",
+        "createdAt": "2026-08-20T09:30:00Z",
+        "updatedAt": "2026-08-28T16:45:00Z",
+        "closedAt": null,
+        "relevanceScore": 0.94
+      }
+    ],
+    "aiDecision": {
+      "severity": "critical",
+      "confidence": 0.94,
+      "reasoning": "CRITICAL severity: Enterprise customer ($285K ACV), 1,200 batch transactions blocked, end-of-month finance close impacted. Matches open GitHub issue #1847.",
+      "businessImpact": "Revenue-critical impact on Enterprise customer ($285K ACV). 1,200 transactions blocked. Finance team blocked on month-end close.",
+      "technicalAssessment": "Batch payment processor timeout consistent with connection pool exhaustion under high concurrency.",
+      "recommendedActions": [
+        "Assign senior payment engineer immediately",
+        "Investigate connection pool settings in payment gateway adapter",
+        "Evaluate rollback of recent v2.14.3 release"
+      ],
+      "shouldEscalate": true,
+      "escalationReason": "Enterprise customer with CRITICAL business impact.",
+      "executiveSummary": "Acme Corporation (Enterprise, $285K ACV) is experiencing batch payment processing failures affecting ~1,200 transactions.",
+      "relatedIssueAnalysis": "Issue #1847 matches symptoms exactly.",
+      "estimatedResolutionTime": "2-4 hours",
+      "riskFactors": ["Enterprise customer with existing churn risk", "Revenue-critical business function affected"],
+      "model": "gemini-3.7-flash",
+      "tokensUsed": 2847,
+      "latencyMs": 1230,
+      "analyzedAt": "2026-08-29T10:15:08Z"
+    },
+    "escalation": {
+      "incidentId": "inc_01J9N2K4M6P8Q0R2",
+      "escalated": true,
+      "reason": "Enterprise customer with CRITICAL severity and AI recommendation to escalate",
+      "actions": [
+        {
+          "action": "create_linear_ticket",
+          "status": "success",
+          "message": "Created ticket ENG-2847 (Priority: Urgent, Assignee: alex.kumar)",
+          "durationMs": 340,
+          "error": null
+        },
+        {
+          "action": "notify_slack",
+          "status": "success",
+          "message": "Notified #engineering-critical with incident details",
+          "durationMs": 180,
+          "error": null
+        },
+        {
+          "action": "generate_summary",
+          "status": "success",
+          "message": "Executive summary generated (gemini-3.7-flash)",
+          "durationMs": 890,
+          "error": null
+        },
+        {
+          "action": "update_notion",
+          "status": "success",
+          "message": "Incident log entry created in Notion",
+          "durationMs": 250,
+          "error": null
+        },
+        {
+          "action": "send_email",
+          "status": "success",
+          "message": "Summary emailed to leadership@company.com",
+          "durationMs": 420,
+          "error": null
+        }
+      ],
+      "linearTicket": {
+        "id": "lin_01J9N2K4M6P8",
+        "identifier": "ENG-2847",
+        "title": "[CRITICAL] Payment processing failure — Acme Corporation",
+        "description": "Batch payment processing failure for Acme Corporation",
+        "priority": 1,
+        "status": "todo",
+        "assignee": "alex.kumar",
+        "teamId": "team_engineering",
+        "labels": ["incident", "critical", "payments"],
+        "incidentId": "inc_01J9N2K4M6P8Q0R2",
+        "url": "https://linear.app/company/issue/ENG-2847",
+        "createdAt": "2026-08-29T10:15:09Z"
+      },
+      "notionEntry": {
+        "id": "notion_pg_01J9N2K4",
+        "incidentId": "inc_01J9N2K4M6P8Q0R2",
+        "title": "Payment processing failure — Acme Corporation",
+        "severity": "critical",
+        "customer": "Acme Corporation",
+        "customerTier": "enterprise",
+        "status": "escalated",
+        "summary": "Batch payment processing failing for enterprise customer Acme Corp.",
+        "aiConfidence": 0.94,
+        "linearTicket": "ENG-2847",
+        "assignee": "alex.kumar",
+        "impactScope": "Revenue-critical: $285K ACV customer",
+        "rootCause": null,
+        "resolution": null,
+        "createdAt": "2026-08-29T10:15:10Z",
+        "updatedAt": "2026-08-29T10:15:10Z",
+        "url": "https://notion.so/company/incident-log/pg_01J9N2K4"
+      },
+      "executiveSummary": {
+        "id": "sum_01J9N2K4M6P8",
+        "incidentId": "inc_01J9N2K4M6P8Q0R2",
+        "title": "CRITICAL: Batch Payment Processing Failure — Acme Corporation",
+        "severity": "critical",
+        "customerImpact": "Acme Corporation ($285K ACV) unable to process ~1,200 batch payment transactions.",
+        "technicalSummary": "Batch payment processor experiencing connection pool timeouts under high concurrency.",
+        "actionsTaken": ["Created Linear ticket ENG-2847", "Notified #engineering-critical Slack channel"],
+        "recommendedNextSteps": ["Investigate connection pool configuration", "Evaluate rollback of v2.14.3"],
+        "timeline": "10:15 AM - Reported. 10:15 AM - Escalation completed.",
+        "riskAssessment": "HIGH RISK - Enterprise customer with $285K ACV.",
+        "generatedBy": "gemini-3.7-flash",
+        "generatedAt": "2026-08-29T10:15:10Z"
+      },
+      "completedAt": "2026-08-29T10:15:10Z",
+      "partialFailure": false,
+      "errors": []
+    },
+    "executiveSummary": {
+      "id": "sum_01J9N2K4M6P8",
+      "incidentId": "inc_01J9N2K4M6P8Q0R2",
+      "title": "CRITICAL: Batch Payment Processing Failure — Acme Corporation",
+      "severity": "critical",
+      "customerImpact": "Acme Corporation ($285K ACV) unable to process ~1,200 batch payment transactions.",
+      "technicalSummary": "Batch payment processor experiencing connection pool timeouts under high concurrency.",
+      "actionsTaken": ["Created Linear ticket ENG-2847", "Notified #engineering-critical Slack channel"],
+      "recommendedNextSteps": ["Investigate connection pool configuration", "Evaluate rollback of v2.14.3"],
+      "timeline": "10:15 AM - Reported. 10:15 AM - Escalation completed.",
+      "riskAssessment": "HIGH RISK - Enterprise customer with $285K ACV.",
+      "generatedBy": "gemini-3.7-flash",
+      "generatedAt": "2026-08-29T10:15:10Z"
+    },
+    "workflowState": {
+      "incidentId": "inc_01J9N2K4M6P8Q0R2",
+      "currentStep": "send_email",
+      "steps": [
+        {
+          "id": "parse_event",
+          "name": "Parse Slack Event",
+          "description": "Extract incident details from Slack message",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:00Z",
+          "completedAt": "2026-08-29T10:15:01Z",
+          "durationMs": 120,
+          "output": "Extracted: customer email, description, channel",
+          "error": null,
+          "icon": "💬"
+        },
+        {
+          "id": "fetch_customer",
+          "name": "Retrieve Customer",
+          "description": "Look up customer data from HubSpot",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:01Z",
+          "completedAt": "2026-08-29T10:15:02Z",
+          "durationMs": 450,
+          "output": "Acme Corporation (Enterprise, $285K ACV)",
+          "error": null,
+          "icon": "👤"
+        },
+        {
+          "id": "fetch_billing",
+          "name": "Retrieve Billing",
+          "description": "Look up billing status from Stripe",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:02Z",
+          "completedAt": "2026-08-29T10:15:03Z",
+          "durationMs": 380,
+          "output": "Active subscription, $23.7K MRR, current",
+          "error": null,
+          "icon": "💳"
+        },
+        {
+          "id": "fetch_issues",
+          "name": "Retrieve Issues",
+          "description": "Search for related GitHub issues",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:03Z",
+          "completedAt": "2026-08-29T10:15:05Z",
+          "durationMs": 520,
+          "output": "1 related issue found (#1847)",
+          "error": null,
+          "icon": "🔧"
+        },
+        {
+          "id": "ai_analysis",
+          "name": "AI Analysis",
+          "description": "Gemini 3.7 Flash severity analysis",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:05Z",
+          "completedAt": "2026-08-29T10:15:08Z",
+          "durationMs": 1230,
+          "output": "CRITICAL (94% confidence)",
+          "error": null,
+          "icon": "🤖"
+        },
+        {
+          "id": "create_ticket",
+          "name": "Create Linear Ticket",
+          "description": "Create engineering work item",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:08Z",
+          "completedAt": "2026-08-29T10:15:09Z",
+          "durationMs": 340,
+          "output": "ENG-2847 created (Urgent)",
+          "error": null,
+          "icon": "🎫"
+        },
+        {
+          "id": "notify_slack",
+          "name": "Notify Engineering",
+          "description": "Post alert to engineering Slack channel",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:09Z",
+          "completedAt": "2026-08-29T10:15:09Z",
+          "durationMs": 180,
+          "output": "Posted to #engineering-critical",
+          "error": null,
+          "icon": "📢"
+        },
+        {
+          "id": "generate_summary",
+          "name": "Generate Summary",
+          "description": "Create executive incident summary",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:09Z",
+          "completedAt": "2026-08-29T10:15:10Z",
+          "durationMs": 890,
+          "output": "Executive summary generated",
+          "error": null,
+          "icon": "📋"
+        },
+        {
+          "id": "update_notion",
+          "name": "Update Notion",
+          "description": "Add entry to incident log",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:10Z",
+          "completedAt": "2026-08-29T10:15:10Z",
+          "durationMs": 250,
+          "output": "Incident log updated",
+          "error": null,
+          "icon": "📓"
+        },
+        {
+          "id": "send_email",
+          "name": "Send Email",
+          "description": "Email summary to leadership",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:15:10Z",
+          "completedAt": "2026-08-29T10:15:10Z",
+          "durationMs": 420,
+          "output": "Email sent to leadership@company.com",
+          "error": null,
+          "icon": "📧"
+        }
+      ],
+      "startedAt": "2026-08-29T10:15:00Z",
+      "completedAt": "2026-08-29T10:15:10Z",
+      "totalDurationMs": 4780,
+      "overallStatus": "completed"
+    },
+    "slackEvent": {
+      "eventId": "Ev06F7G8H9I0J1K2",
+      "type": "message",
+      "channel": "#support-escalations",
+      "channelId": "C04ABCDEF12",
+      "userId": "U05GHIJKL34",
+      "userName": "maria.garcia",
+      "text": "🚨 Acme Corp (ops@acmecorp.com) reporting batch payment processing failures. ~1200 transactions affected.",
+      "customerEmail": "ops@acmecorp.com",
+      "timestamp": "1724929500.001234",
+      "threadTs": null
+    },
+    "timeline": [
+      {
+        "id": "evt_001",
+        "timestamp": "2026-08-29T10:15:00Z",
+        "type": "incident_created",
+        "title": "Incident Created",
+        "description": "Incident received from Slack #support-escalations",
+        "status": "success"
+      },
+      {
+        "id": "evt_002",
+        "timestamp": "2026-08-29T10:15:02Z",
+        "type": "customer_enriched",
+        "title": "Customer Context Retrieved",
+        "description": "HubSpot: Acme Corporation (Enterprise, $285K ACV)",
+        "status": "success"
+      },
+      {
+        "id": "evt_003",
+        "timestamp": "2026-08-29T10:15:03Z",
+        "type": "billing_enriched",
+        "title": "Billing Status Retrieved",
+        "description": "Stripe: Active subscription, current on payments",
+        "status": "success"
+      },
+      {
+        "id": "evt_004",
+        "timestamp": "2026-08-29T10:15:05Z",
+        "type": "issues_enriched",
+        "title": "Related Issues Found",
+        "description": "GitHub: 1 related open issue found (#1847)",
+        "status": "success"
+      },
+      {
+        "id": "evt_005",
+        "timestamp": "2026-08-29T10:15:08Z",
+        "type": "ai_analysis_complete",
+        "title": "AI Analysis Complete",
+        "description": "Gemini: CRITICAL severity (confidence: 0.94)",
+        "status": "success"
+      },
+      {
+        "id": "evt_006",
+        "timestamp": "2026-08-29T10:15:10Z",
+        "type": "escalation_complete",
+        "title": "Escalation Complete",
+        "description": "Linear ticket created, Slack notified, Notion updated, Email sent",
+        "status": "success"
+      }
+    ],
+    "createdAt": "2026-08-29T10:15:00Z",
+    "updatedAt": "2026-08-29T10:15:10Z",
+    "resolvedAt": null
+  },
+  {
+    "id": "inc_02K0P3L5N7R9S1T3",
+    "title": "API Gateway response time spikes on analytics aggregation endpoint",
+    "description": "TechFlow Solutions reporting response times over 5 seconds on their main reporting dashboard.",
+    "source": "slack",
+    "status": "triaged",
+    "severity": "high",
+    "customerEmail": "dev@techflow.io",
+    "customer": {
+      "id": "cust_02J9L4N3P5Q6R7S8",
+      "email": "dev@techflow.io",
+      "name": "TechFlow Solutions",
+      "contactName": "Marcus Vance",
+      "tier": "enterprise",
+      "contractValue": 180000,
+      "employeeCount": 850,
+      "industry": "Technology",
+      "region": "Europe",
+      "accountManager": "Elena Rostova",
+      "healthScore": 88,
+      "churnRisk": "low",
+      "openTickets": 1,
+      "lastContactDate": "2026-08-28T10:15:00Z",
+      "createdAt": "2024-07-01T11:00:00Z"
+    },
+    "billing": {
+      "customerId": "cust_02J9L4N3P5Q6R7S8",
+      "subscriptionStatus": "active",
+      "plan": "Enterprise Scale",
+      "mrr": 15000,
+      "totalSpend": 360000,
+      "lastPaymentDate": "2026-08-15T00:00:00Z",
+      "lastPaymentAmount": 15000,
+      "failedPayments": 0,
+      "paymentMethod": "bank_transfer",
+      "billingEmail": "finance@techflow.io",
+      "nextInvoiceDate": "2026-09-15T00:00:00Z"
+    },
+    "relatedIssues": [
+      {
+        "id": "issue_102",
+        "number": 1852,
+        "title": "API Gateway latency spikes during analytics payload aggregation",
+        "state": "open",
+        "body": "Response times on /v2/analytics/aggregate exceed 5000ms when handling requests with over 50 filter parameters.",
+        "labels": ["performance", "api-gateway", "P2"],
+        "assignee": "maria.santos",
+        "repository": "api-gateway",
+        "url": "https://github.com/company/api-gateway/issues/1852",
+        "createdAt": "2026-08-22T11:15:00Z",
+        "updatedAt": "2026-08-27T14:20:00Z",
+        "closedAt": null,
+        "relevanceScore": 0.88
+      }
+    ],
+    "aiDecision": {
+      "severity": "high",
+      "confidence": 0.88,
+      "reasoning": "HIGH severity: Enterprise customer TechFlow Solutions ($180K ACV) experiencing severe latency >5s on analytics endpoints.",
+      "businessImpact": "Operational degradation for Enterprise customer ($180K ACV). Dashboard responsiveness degraded across 850 employees.",
+      "technicalAssessment": "API Gateway latency spikes on /v2/analytics/aggregate endpoint due to cache miss rate and parameter filter overhead.",
+      "recommendedActions": [
+        "Scale API Gateway worker instances dynamically",
+        "Warm Redis cache layer for analytics queries"
+      ],
+      "shouldEscalate": true,
+      "escalationReason": "Enterprise customer experiencing severe SLA degradation.",
+      "executiveSummary": "TechFlow Solutions (Enterprise, $180K ACV) experiencing severe API latency (>5s) on analytics endpoints.",
+      "relatedIssueAnalysis": "Matches issue #1852.",
+      "estimatedResolutionTime": "1-2 hours",
+      "riskFactors": ["Enterprise customer SLA threshold breach"],
+      "model": "gemini-3.7-flash",
+      "tokensUsed": 2150,
+      "latencyMs": 980,
+      "analyzedAt": "2026-08-29T10:10:00Z"
+    },
+    "escalation": null,
+    "executiveSummary": null,
+    "workflowState": {
+      "incidentId": "inc_02K0P3L5N7R9S1T3",
+      "currentStep": "ai_analysis",
+      "steps": [
+        {
+          "id": "parse_event",
+          "name": "Parse Slack Event",
+          "description": "Extract incident details from Slack message",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:09:50Z",
+          "completedAt": "2026-08-29T10:09:51Z",
+          "durationMs": 110,
+          "output": "Extracted: customer email, description",
+          "error": null,
+          "icon": "💬"
+        },
+        {
+          "id": "fetch_customer",
+          "name": "Retrieve Customer",
+          "description": "Look up customer data from HubSpot",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:09:51Z",
+          "completedAt": "2026-08-29T10:09:52Z",
+          "durationMs": 420,
+          "output": "TechFlow Solutions (Enterprise, $180K ACV)",
+          "error": null,
+          "icon": "👤"
+        },
+        {
+          "id": "fetch_billing",
+          "name": "Retrieve Billing",
+          "description": "Look up billing status from Stripe",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:09:52Z",
+          "completedAt": "2026-08-29T10:09:53Z",
+          "durationMs": 350,
+          "output": "Active subscription, $15K MRR",
+          "error": null,
+          "icon": "💳"
+        },
+        {
+          "id": "fetch_issues",
+          "name": "Retrieve Issues",
+          "description": "Search for related GitHub issues",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:09:53Z",
+          "completedAt": "2026-08-29T10:09:55Z",
+          "durationMs": 480,
+          "output": "1 related issue found (#1852)",
+          "error": null,
+          "icon": "🔧"
+        },
+        {
+          "id": "ai_analysis",
+          "name": "AI Analysis",
+          "description": "Gemini 3.7 Flash severity analysis",
+          "status": "completed",
+          "startedAt": "2026-08-29T10:09:55Z",
+          "completedAt": "2026-08-29T10:10:00Z",
+          "durationMs": 980,
+          "output": "HIGH (88% confidence)",
+          "error": null,
+          "icon": "🤖"
+        },
+        {
+          "id": "create_ticket",
+          "name": "Create Linear Ticket",
+          "description": "Create engineering work item",
+          "status": "pending",
+          "startedAt": null,
+          "completedAt": null,
+          "durationMs": null,
+          "output": null,
+          "error": null,
+          "icon": "🎫"
+        },
+        {
+          "id": "notify_slack",
+          "name": "Notify Engineering",
+          "description": "Post alert to engineering Slack channel",
+          "status": "pending",
+          "startedAt": null,
+          "completedAt": null,
+          "durationMs": null,
+          "output": null,
+          "error": null,
+          "icon": "📢"
+        },
+        {
+          "id": "generate_summary",
+          "name": "Generate Summary",
+          "description": "Create executive incident summary",
+          "status": "pending",
+          "startedAt": null,
+          "completedAt": null,
+          "durationMs": null,
+          "output": null,
+          "error": null,
+          "icon": "📋"
+        },
+        {
+          "id": "update_notion",
+          "name": "Update Notion",
+          "description": "Add entry to incident log",
+          "status": "pending",
+          "startedAt": null,
+          "completedAt": null,
+          "durationMs": null,
+          "output": null,
+          "error": null,
+          "icon": "📓"
+        },
+        {
+          "id": "send_email",
+          "name": "Send Email",
+          "description": "Email summary to leadership",
+          "status": "pending",
+          "startedAt": null,
+          "completedAt": null,
+          "durationMs": null,
+          "output": null,
+          "error": null,
+          "icon": "📧"
+        }
+      ],
+      "startedAt": "2026-08-29T10:09:50Z",
+      "completedAt": null,
+      "totalDurationMs": 2340,
+      "overallStatus": "running"
+    },
+    "slackEvent": {
+      "eventId": "Ev07G8H9I0J1K2L3",
+      "type": "message",
+      "channel": "#support-escalations",
+      "channelId": "C04ABCDEF12",
+      "userId": "U06HJKLM45",
+      "userName": "david.chen",
+      "text": "TechFlow Solutions (dev@techflow.io) reporting API latency spikes on reporting endpoints.",
+      "customerEmail": "dev@techflow.io",
+      "timestamp": "1724929190.001234",
+      "threadTs": null
+    },
+    "timeline": [
+      {
+        "id": "evt_201",
+        "timestamp": "2026-08-29T10:09:50Z",
+        "type": "incident_created",
+        "title": "Incident Created",
+        "description": "Received from Slack report",
+        "status": "success"
+      },
+      {
+        "id": "evt_202",
+        "timestamp": "2026-08-29T10:09:52Z",
+        "type": "customer_enriched",
+        "title": "Customer Context Retrieved",
+        "description": "TechFlow Solutions (Enterprise, $180K ACV)",
+        "status": "success"
+      },
+      {
+        "id": "evt_203",
+        "timestamp": "2026-08-29T10:10:00Z",
+        "type": "ai_analysis_complete",
+        "title": "AI Analysis Complete",
+        "description": "Gemini: HIGH severity (88% confidence)",
+        "status": "success"
+      }
+    ],
+    "createdAt": "2026-08-29T10:09:50Z",
+    "updatedAt": "2026-08-29T10:10:00Z",
+    "resolvedAt": null
+  },
+  {
+    "id": "inc_03L1Q4M6P8S0T2U4",
+    "title": "Data synchronization pipeline delays on contact record updates",
+    "description": "GrowthMetrics reporting intermittent 10-minute sync delays when updating contact lists in CRM.",
+    "source": "manual",
+    "status": "analyzing",
+    "severity": "medium",
+    "customerEmail": "dev@growthmetrics.io",
+    "customer": {
+      "id": "cust_03K0M5P4Q6R7S8T9",
+      "email": "dev@growthmetrics.io",
+      "name": "GrowthMetrics",
+      "contactName": "David Park",
+      "tier": "smb",
+      "contractValue": 24000,
+      "employeeCount": 45,
+      "industry": "Marketing Tech",
+      "region": "North America",
+      "accountManager": "Sarah Jenkins",
+      "healthScore": 65,
+      "churnRisk": "high",
+      "openTickets": 4,
+      "lastContactDate": "2026-08-20T16:00:00Z",
+      "createdAt": "2025-01-10T14:20:00Z"
+    },
+    "billing": {
+      "customerId": "cust_03K0M5P4Q6R7S8T9",
+      "subscriptionStatus": "past_due",
+      "plan": "SMB Growth",
+      "mrr": 2000,
+      "totalSpend": 38000,
+      "lastPaymentDate": "2026-07-01T00:00:00Z",
+      "lastPaymentAmount": 2000,
+      "failedPayments": 2,
+      "paymentMethod": "card",
+      "billingEmail": "accounts@growthmetrics.io",
+      "nextInvoiceDate": "2026-08-01T00:00:00Z"
+    },
+    "relatedIssues": [
+      {
+        "id": "issue_105",
+        "number": 1812,
+        "title": "Data synchronization pipeline dropping events on schema migration",
+        "state": "open",
+        "body": "CRM sync connector drops contact updates when customer records contain nested JSON arrays exceeding 64KB.",
+        "labels": ["data-sync", "crm", "P3"],
+        "assignee": "tech-lead",
+        "repository": "sync-engine",
+        "url": "https://github.com/company/sync-engine/issues/1812",
+        "createdAt": "2026-08-01T15:20:00Z",
+        "updatedAt": "2026-08-10T12:00:00Z",
+        "closedAt": null,
+        "relevanceScore": 0.75
+      }
+    ],
+    "aiDecision": {
+      "severity": "medium",
+      "confidence": 0.82,
+      "reasoning": "MEDIUM severity: SMB customer GrowthMetrics ($24K ACV) experiencing contact list sync delays.",
+      "businessImpact": "GrowthMetrics ($24K ACV) experiencing CRM sync delays. Account has high churn risk.",
+      "technicalAssessment": "Sync connector dropping contact updates when payload exceeds size limit.",
+      "recommendedActions": [
+        "Increase buffer payload size limit on CRM sync adapter",
+        "Re-trigger failed sync queue batch"
+      ],
+      "shouldEscalate": false,
+      "escalationReason": "SMB tier customer at Medium severity does not meet automatic escalation threshold.",
+      "executiveSummary": "GrowthMetrics (SMB, $24K ACV) experiencing CRM sync delays due to payload size limits.",
+      "relatedIssueAnalysis": "Issue #1812 covers payload size overflow.",
+      "estimatedResolutionTime": "4-6 hours",
+      "riskFactors": ["High churn risk customer", "Past due billing status"],
+      "model": "gemini-3.7-flash",
+      "tokensUsed": 1820,
+      "latencyMs": 850,
+      "analyzedAt": "2026-08-29T09:45:00Z"
+    },
+    "escalation": null,
+    "executiveSummary": null,
+    "workflowState": {
+      "incidentId": "inc_03L1Q4M6P8S0T2U4",
+      "currentStep": "ai_analysis",
+      "steps": [
+        {
+          "id": "parse_event",
+          "name": "Parse Slack Event",
+          "description": "Extract incident details",
+          "status": "completed",
+          "startedAt": "2026-08-29T09:44:00Z",
+          "completedAt": "2026-08-29T09:44:01Z",
+          "durationMs": 100,
+          "output": "Manual report input parsed",
+          "error": null,
+          "icon": "💬"
+        },
+        {
+          "id": "fetch_customer",
+          "name": "Retrieve Customer",
+          "description": "Look up customer data",
+          "status": "completed",
+          "startedAt": "2026-08-29T09:44:01Z",
+          "completedAt": "2026-08-29T09:44:02Z",
+          "durationMs": 300,
+          "output": "GrowthMetrics (SMB, $24K ACV)",
+          "error": null,
+          "icon": "👤"
+        },
+        {
+          "id": "fetch_billing",
+          "name": "Retrieve Billing",
+          "description": "Look up billing status",
+          "status": "completed",
+          "startedAt": "2026-08-29T09:44:02Z",
+          "completedAt": "2026-08-29T09:44:03Z",
+          "durationMs": 280,
+          "output": "Past Due status ($2K MRR)",
+          "error": null,
+          "icon": "💳"
+        },
+        {
+          "id": "fetch_issues",
+          "name": "Retrieve Issues",
+          "description": "Search GitHub issues",
+          "status": "completed",
+          "startedAt": "2026-08-29T09:44:03Z",
+          "completedAt": "2026-08-29T09:44:04Z",
+          "durationMs": 400,
+          "output": "1 related issue (#1812)",
+          "error": null,
+          "icon": "🔧"
+        },
+        {
+          "id": "ai_analysis",
+          "name": "AI Analysis",
+          "description": "Gemini severity analysis",
+          "status": "running",
+          "startedAt": "2026-08-29T09:44:04Z",
+          "completedAt": null,
+          "durationMs": null,
+          "output": null,
+          "error": null,
+          "icon": "🤖"
+        }
+      ],
+      "startedAt": "2026-08-29T09:44:00Z",
+      "completedAt": null,
+      "totalDurationMs": 1080,
+      "overallStatus": "running"
+    },
+    "slackEvent": null,
+    "timeline": [
+      {
+        "id": "evt_301",
+        "timestamp": "2026-08-29T09:44:00Z",
+        "type": "incident_created",
+        "title": "Incident Created",
+        "description": "Manual intake form submission",
+        "status": "success"
+      },
+      {
+        "id": "evt_302",
+        "timestamp": "2026-08-29T09:44:02Z",
+        "type": "customer_enriched",
+        "title": "Customer Context Retrieved",
+        "description": "GrowthMetrics (SMB, $24K ACV, High Churn Risk)",
+        "status": "warning"
+      }
+    ],
+    "createdAt": "2026-08-29T09:44:00Z",
+    "updatedAt": "2026-08-29T09:45:00Z",
+    "resolvedAt": null
+  },
+  {
+    "id": "inc_04M2R5N7Q9T1U3V5",
+    "title": "Feature Request: Webhook HMAC signature verification in CI/CD pipeline",
+    "description": "DevStudio Pro requesting webhook HMAC signature verification support for their deployment pipeline.",
+    "source": "manual",
+    "status": "resolved",
+    "severity": "low",
+    "customerEmail": "hello@devstudio.pro",
+    "customer": {
+      "id": "cust_04L1N6Q5R7S8T9U0",
+      "email": "hello@devstudio.pro",
+      "name": "DevStudio Pro",
+      "contactName": "Aisha Patel",
+      "tier": "startup",
+      "contractValue": 6000,
+      "employeeCount": 12,
+      "industry": "Software Agency",
+      "region": "Asia-Pacific",
+      "accountManager": "Self-Serve",
+      "healthScore": 82,
+      "churnRisk": "low",
+      "openTickets": 0,
+      "lastContactDate": "2026-08-15T08:45:00Z",
+      "createdAt": "2025-05-22T10:00:00Z"
+    },
+    "billing": {
+      "customerId": "cust_04L1N6Q5R7S8T9U0",
+      "subscriptionStatus": "trialing",
+      "plan": "Startup Pro",
+      "mrr": 500,
+      "totalSpend": 1500,
+      "lastPaymentDate": "2026-07-15T00:00:00Z",
+      "lastPaymentAmount": 500,
+      "failedPayments": 0,
+      "paymentMethod": "card",
+      "billingEmail": "billing@devstudio.pro",
+      "nextInvoiceDate": "2026-09-01T00:00:00Z"
+    },
+    "relatedIssues": [
+      {
+        "id": "issue_107",
+        "number": 1865,
+        "title": "Request to add Webhook HMAC signature verification in CI/CD pipeline",
+        "state": "open",
+        "body": "Customer requesting capability to verify inbound webhook signatures using SHA-256 HMAC tokens.",
+        "labels": ["feature-request", "webhooks", "P4"],
+        "assignee": null,
+        "repository": "platform-core",
+        "url": "https://github.com/company/platform-core/issues/1865",
+        "createdAt": "2026-08-26T14:00:00Z",
+        "updatedAt": "2026-08-26T14:00:00Z",
+        "closedAt": null,
+        "relevanceScore": 0.40
+      }
+    ],
+    "aiDecision": {
+      "severity": "low",
+      "confidence": 0.91,
+      "reasoning": "LOW severity: Startup tier account requesting non-blocking feature enhancement.",
+      "businessImpact": "Zero operational downtime. Feature enhancement request.",
+      "technicalAssessment": "Feature request for HMAC SHA-256 webhook signature verification.",
+      "recommendedActions": [
+        "Link incident to product roadmap feature issue #1865",
+        "Inform customer contact of planned roadmap delivery timeline"
+      ],
+      "shouldEscalate": false,
+      "escalationReason": null,
+      "executiveSummary": "DevStudio Pro (Startup, $6K ACV) submitted a feature request for webhook HMAC verification.",
+      "relatedIssueAnalysis": "Issue #1865 covers this request.",
+      "estimatedResolutionTime": "Q3 Roadmap Feature",
+      "riskFactors": [],
+      "model": "gemini-3.7-flash",
+      "tokensUsed": 1240,
+      "latencyMs": 620,
+      "analyzedAt": "2026-08-29T08:30:00Z"
+    },
+    "escalation": null,
+    "executiveSummary": null,
+    "workflowState": {
+      "incidentId": "inc_04M2R5N7Q9T1U3V5",
+      "currentStep": "completed",
+      "steps": [
+        {
+          "id": "parse_event",
+          "name": "Parse Manual Report",
+          "description": "Extract incident input",
+          "status": "completed",
+          "startedAt": "2026-08-29T08:29:50Z",
+          "completedAt": "2026-08-29T08:29:51Z",
+          "durationMs": 80,
+          "output": "Parsed manual form input",
+          "error": null,
+          "icon": "💬"
+        },
+        {
+          "id": "fetch_customer",
+          "name": "Retrieve Customer",
+          "description": "Look up customer data",
+          "status": "completed",
+          "startedAt": "2026-08-29T08:29:51Z",
+          "completedAt": "2026-08-29T08:29:52Z",
+          "durationMs": 250,
+          "output": "DevStudio Pro (Startup, $6K ACV)",
+          "error": null,
+          "icon": "👤"
+        },
+        {
+          "id": "ai_analysis",
+          "name": "AI Analysis",
+          "description": "Gemini severity analysis",
+          "status": "completed",
+          "startedAt": "2026-08-29T08:29:52Z",
+          "completedAt": "2026-08-29T08:29:53Z",
+          "durationMs": 620,
+          "output": "LOW (91% confidence)",
+          "error": null,
+          "icon": "🤖"
+        }
+      ],
+      "startedAt": "2026-08-29T08:29:50Z",
+      "completedAt": "2026-08-29T08:30:00Z",
+      "totalDurationMs": 950,
+      "overallStatus": "completed"
+    },
+    "slackEvent": null,
+    "timeline": [
+      {
+        "id": "evt_401",
+        "timestamp": "2026-08-29T08:29:50Z",
+        "type": "incident_created",
+        "title": "Incident Created",
+        "description": "Manual intake submission",
+        "status": "success"
+      },
+      {
+        "id": "evt_402",
+        "timestamp": "2026-08-29T08:30:00Z",
+        "type": "incident_resolved",
+        "title": "Incident Resolved",
+        "description": "Routed to Product Backlog issue #1865",
+        "status": "success"
+      }
+    ],
+    "createdAt": "2026-08-29T08:29:50Z",
+    "updatedAt": "2026-08-29T08:30:00Z",
+    "resolvedAt": "2026-08-29T08:30:00Z"
+  },
+  {
+    "id": "inc_05N3S6P8R0U2V4W6",
+    "title": "Okta SSO authentication failure on enterprise tenant renewal",
+    "description": "Acme Corp reporting secondary auth failures for Okta SSO refresh tokens after tenant renewal.",
+    "source": "slack",
+    "status": "received",
+    "severity": null,
+    "customerEmail": "ops@acmecorp.com",
+    "customer": null,
+    "billing": null,
+    "relatedIssues": [],
+    "aiDecision": null,
+    "escalation": null,
+    "executiveSummary": null,
+    "workflowState": {
+      "incidentId": "inc_05N3S6P8R0U2V4W6",
+      "currentStep": "parse_event",
+      "steps": [
+        {
+          "id": "parse_event",
+          "name": "Parse Slack Event",
+          "description": "Extract incident details",
+          "status": "running",
+          "startedAt": "2026-08-29T10:20:00Z",
+          "completedAt": null,
+          "durationMs": null,
+          "output": null,
+          "error": null,
+          "icon": "💬"
+        },
+        {
+          "id": "fetch_customer",
+          "name": "Retrieve Customer",
+          "description": "Look up customer data",
+          "status": "pending",
+          "startedAt": null,
+          "completedAt": null,
+          "durationMs": null,
+          "output": null,
+          "error": null,
+          "icon": "👤"
+        }
+      ],
+      "startedAt": "2026-08-29T10:20:00Z",
+      "completedAt": null,
+      "totalDurationMs": null,
+      "overallStatus": "running"
+    },
+    "slackEvent": {
+      "eventId": "Ev08H9I0J1K2L3M4",
+      "type": "message",
+      "channel": "#support-escalations",
+      "channelId": "C04ABCDEF12",
+      "userId": "U05GHIJKL34",
+      "userName": "maria.garcia",
+      "text": "Acme Corp (ops@acmecorp.com) reporting Okta SSO auth token errors after tenant renewal.",
+      "customerEmail": "ops@acmecorp.com",
+      "timestamp": "1724929800.001234",
+      "threadTs": null
+    },
+    "timeline": [
+      {
+        "id": "evt_501",
+        "timestamp": "2026-08-29T10:20:00Z",
+        "type": "incident_created",
+        "title": "Incident Received",
+        "description": "Received Slack alert from #support-escalations",
+        "status": "success"
+      }
+    ],
+    "createdAt": "2026-08-29T10:20:00Z",
+    "updatedAt": "2026-08-29T10:20:00Z",
+    "resolvedAt": null
+  }
+]

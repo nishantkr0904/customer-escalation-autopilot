@@ -1,0 +1,67 @@
+[
+  {
+    "customerId": "cust_01H8K3M2N4P5Q6R7",
+    "subscriptionStatus": "active",
+    "plan": "Enterprise Annual",
+    "mrr": 23750,
+    "totalSpend": 570000,
+    "lastPaymentDate": "2026-08-01T00:00:00Z",
+    "lastPaymentAmount": 23750,
+    "failedPayments": 0,
+    "paymentMethod": "card",
+    "billingEmail": "billing@acmecorp.com",
+    "nextInvoiceDate": "2026-09-01T00:00:00Z"
+  },
+  {
+    "customerId": "cust_02J9L4N3P5Q6R7S8",
+    "subscriptionStatus": "active",
+    "plan": "Enterprise Scale",
+    "mrr": 15000,
+    "totalSpend": 360000,
+    "lastPaymentDate": "2026-08-15T00:00:00Z",
+    "lastPaymentAmount": 15000,
+    "failedPayments": 0,
+    "paymentMethod": "bank_transfer",
+    "billingEmail": "finance@techflow.io",
+    "nextInvoiceDate": "2026-09-15T00:00:00Z"
+  },
+  {
+    "customerId": "cust_03K0M5P4Q6R7S8T9",
+    "subscriptionStatus": "past_due",
+    "plan": "SMB Growth",
+    "mrr": 2000,
+    "totalSpend": 38000,
+    "lastPaymentDate": "2026-07-01T00:00:00Z",
+    "lastPaymentAmount": 2000,
+    "failedPayments": 2,
+    "paymentMethod": "card",
+    "billingEmail": "accounts@growthmetrics.io",
+    "nextInvoiceDate": "2026-08-01T00:00:00Z"
+  },
+  {
+    "customerId": "cust_04L1N6Q5R7S8T9U0",
+    "subscriptionStatus": "trialing",
+    "plan": "Startup Pro",
+    "mrr": 500,
+    "totalSpend": 1500,
+    "lastPaymentDate": "2026-07-15T00:00:00Z",
+    "lastPaymentAmount": 500,
+    "failedPayments": 0,
+    "paymentMethod": "card",
+    "billingEmail": "billing@devstudio.pro",
+    "nextInvoiceDate": "2026-09-01T00:00:00Z"
+  },
+  {
+    "customerId": "cust_05M2P7R6S8T9U0V1",
+    "subscriptionStatus": "canceled",
+    "plan": "Free Community",
+    "mrr": 0,
+    "totalSpend": 0,
+    "lastPaymentDate": "2025-09-01T00:00:00Z",
+    "lastPaymentAmount": 0,
+    "failedPayments": 0,
+    "paymentMethod": "none",
+    "billingEmail": "support@openbuild.org",
+    "nextInvoiceDate": "2026-12-31T00:00:00Z"
+  }
+]

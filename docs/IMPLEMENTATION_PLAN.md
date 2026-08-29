@@ -57,7 +57,7 @@ Initialize the Next.js project with TypeScript, Tailwind CSS, and establish the 
 
 ---
 
-## Milestone 2: TypeScript Types & Mock Data
+## Milestone 2: TypeScript Types & Mock Data ✅
 
 ### Objective
 Define all TypeScript interfaces and create realistic mock JSON data files that will power the entire application until real APIs are integrated.
@@ -81,13 +81,13 @@ Define all TypeScript interfaces and create realistic mock JSON data files that 
 - Utility functions for formatting dates, currencies, and severity labels
 
 ### Acceptance Criteria
-- [ ] All types from DATA_MODEL.md are defined
-- [ ] Mock data files contain realistic, internally consistent data
-- [ ] Customers span all tiers (enterprise, smb, startup, free)
-- [ ] Incidents span all lifecycle states (received → resolved)
-- [ ] AI responses span all severity levels
-- [ ] TypeScript compiles with no errors (`npx tsc --noEmit`)
-- [ ] Formatting utilities handle edge cases (null, undefined, empty)
+- [x] All types from DATA_MODEL.md are defined
+- [x] Mock data files contain realistic, internally consistent data
+- [x] Customers span all tiers (enterprise, smb, startup, free)
+- [x] Incidents span all lifecycle states (received → resolved)
+- [x] AI responses span all severity levels
+- [x] TypeScript compiles with no errors (`npx tsc --noEmit`)
+- [x] Formatting utilities handle edge cases (null, undefined, empty)
 
 ### Estimated Time
 **1.5 hours**
