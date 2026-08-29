@@ -417,7 +417,7 @@ Build the incident creation form that drives the live demo experience. This is t
 
 ---
 
-## Milestone 11: Polish, Animations & Final Demo Prep
+## Milestone 11: Polish, Animations & Final Demo Prep ✅
 
 ### Objective
 Final polish pass — micro-animations, transition effects, empty states, error boundaries, responsive refinements, and end-to-end demo testing.
@@ -442,15 +442,15 @@ Final polish pass — micro-animations, transition effects, empty states, error 
 - Project root README.md
 
 ### Acceptance Criteria
-- [ ] All cards have hover lift/glow effects
-- [ ] Severity badges have subtle pulse on Critical
-- [ ] Page transitions are smooth (no layout shift)
-- [ ] Empty states have illustrations/helpful text
-- [ ] Error states show retry buttons
-- [ ] Full demo flow works: Dashboard → New Incident → Workflow → Detail → Health
-- [ ] No TypeScript errors (`npx tsc --noEmit`)
-- [ ] Builds successfully (`npm run build`)
-- [ ] Root README.md exists with project overview
+- [x] All cards have hover lift/glow effects
+- [x] Severity badges have subtle pulse on Critical
+- [x] Page transitions are smooth (no layout shift)
+- [x] Empty states have illustrations/helpful text
+- [x] Error states show retry buttons
+- [x] Full demo flow works: Dashboard → New Incident → Workflow → Detail → Health
+- [x] No TypeScript errors (`npx tsc --noEmit`)
+- [x] Builds successfully (`npm run build`)
+- [x] Root README.md exists with project overview
 
 ### Estimated Time
 **2 hours**

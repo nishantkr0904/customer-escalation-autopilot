@@ -454,7 +454,7 @@ These elevate the demo if time permits.
 
 ---
 
-### NH-01: Micro-Animations
+### NH-01: Micro-Animations ✅
 
 **Description:**
 Subtle animations that make the interface feel alive and responsive.
@@ -490,7 +490,7 @@ Dashboard has a visual data element beyond numbers and tables.
 
 ---
 
-### NH-03: Graceful Degradation UX
+### NH-03: Graceful Degradation UX ✅
 
 **Description:**
 When a service is unavailable, the UI clearly indicates which data is missing without breaking the experience.
