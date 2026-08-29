@@ -258,7 +258,7 @@ Build the main dashboard page with summary statistics, recent incidents, severit
 
 ---
 
-## Milestone 7: Incident Pages (List + Detail)
+## Milestone 7: Incident Pages (List + Detail) ✅
 
 ### Objective
 Build the incident list page (with filtering) and the incident detail page (full context, AI reasoning, escalation results, timeline).
@@ -286,15 +286,15 @@ Build the incident list page (with filtering) and the incident detail page (full
 - Chronological timeline with status icons
 
 ### Acceptance Criteria
-- [ ] Incident list page shows all incidents with severity/status badges
-- [ ] Filter by severity (dropdown) and status (tabs) works
-- [ ] Clicking an incident navigates to detail page
-- [ ] Detail page shows: Customer Context, AI Reasoning, Escalation Actions, Executive Summary, Timeline
-- [ ] Customer context shows: name, tier, contract value, health score, churn risk
-- [ ] AI reasoning shows: severity badge, confidence meter, full reasoning text, recommended actions
-- [ ] Escalation actions show each action with success/failure status
-- [ ] Timeline shows chronological events with timestamps and icons
-- [ ] Loading and error states display correctly
+- [x] Incident list page shows all incidents with severity/status badges
+- [x] Filter by severity (dropdown) and status (tabs) works
+- [x] Clicking an incident navigates to detail page
+- [x] Detail page shows: Customer Context, AI Reasoning, Escalation Actions, Executive Summary, Timeline
+- [x] Customer context shows: name, tier, contract value, health score, churn risk
+- [x] AI reasoning shows: severity badge, confidence meter, full reasoning text, recommended actions
+- [x] Escalation actions show each action with success/failure status
+- [x] Timeline shows chronological events with timestamps and icons
+- [x] Loading and error states display correctly
 
 ### Estimated Time
 **3 hours**

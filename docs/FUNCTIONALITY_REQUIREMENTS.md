@@ -224,7 +224,7 @@ Email action shows "success" in escalation results.
 
 ---
 
-### MH-13: Incident List Page
+### MH-13: Incident List Page ✅
 
 **Description:**
 A page displaying all incidents with severity badges, statuses, and basic filtering.
@@ -243,7 +243,7 @@ User can browse, filter, and navigate to any incident from the list page.
 
 ---
 
-### MH-14: Incident Detail Page
+### MH-14: Incident Detail Page ✅
 
 **Description:**
 A comprehensive view of a single incident showing all context, AI analysis, and escalation results.
@@ -357,7 +357,7 @@ No blank screens during data loading — skeletons provide immediate visual feed
 
 ---
 
-### SH-04: Incident Timeline Display
+### SH-04: Incident Timeline Display ✅
 
 **Description:**
 A chronological timeline showing every event in the incident lifecycle.
@@ -431,7 +431,7 @@ Application is usable on laptop, tablet, and phone-sized viewports.
 
 ---
 
-### SH-08: Confidence Score Visualization
+### SH-08: Confidence Score Visualization ✅
 
 **Description:**
 The AI confidence score is displayed as a visual meter or progress bar, not just a number.
