@@ -218,7 +218,7 @@ Create all Next.js API routes that expose the service layer to the frontend.
 
 ---
 
-## Milestone 6: Dashboard Page
+## Milestone 6: Dashboard Page ✅
 
 ### Objective
 Build the main dashboard page with summary statistics, recent incidents, severity distribution, and quick action buttons.
@@ -241,13 +241,13 @@ Build the main dashboard page with summary statistics, recent incidents, severit
 - Quick action buttons that navigate or open forms
 
 ### Acceptance Criteria
-- [ ] Dashboard loads and displays data from `/api/incidents`
-- [ ] Stats grid shows: Total Incidents, Critical, Avg Response Time, Active Escalations
-- [ ] Recent incidents table shows last 5 incidents with severity badges
-- [ ] Clicking an incident navigates to `/incidents/[id]`
-- [ ] Quick actions work: "New Incident" opens form, "Check Health" navigates to /health
-- [ ] Loading skeletons display while data fetches
-- [ ] Empty state displays when no incidents exist
+- [x] Dashboard loads and displays data from `/api/incidents`
+- [x] Stats grid shows: Total Incidents, Critical, Avg Response Time, Active Escalations
+- [x] Recent incidents table shows last 5 incidents with severity badges
+- [x] Clicking an incident navigates to `/incidents/[id]`
+- [x] Quick actions work: "New Incident" opens form, "Check Health" navigates to /health
+- [x] Loading skeletons display while data fetches
+- [x] Empty state displays when no incidents exist
 
 ### Estimated Time
 **2 hours**

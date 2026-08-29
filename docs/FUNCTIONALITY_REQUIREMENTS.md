@@ -260,7 +260,7 @@ Complete incident context is visible on a single page.
 
 ---
 
-### MH-15: Dashboard Page
+### MH-15: Dashboard Page ✅
 
 **Description:**
 A summary dashboard showing high-level metrics, recent incidents, and quick actions.
