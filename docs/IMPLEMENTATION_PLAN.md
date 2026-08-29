@@ -139,7 +139,7 @@ Build the integration layer with adapter interfaces and mock implementations for
 
 ---
 
-## Milestone 4: Service Layer — AI Pipeline & Triage
+## Milestone 4: Service Layer — AI Pipeline & Triage ✅
 
 ### Objective
 Build the core business logic: the AI pipeline service (Gemini integration with mock fallback), triage service (severity classification + escalation rules), and escalation service (action dispatcher).
@@ -160,14 +160,14 @@ Build the core business logic: the AI pipeline service (Gemini integration with 
 - Escalation service that dispatches all 5 actions
 
 ### Acceptance Criteria
-- [ ] `orchestrator.processIncident(slackEvent)` executes the full pipeline
-- [ ] AI pipeline returns structured `AIDecision` matching the schema
-- [ ] Triage correctly escalates: Enterprise at Medium+, all customers at Critical
-- [ ] Triage correctly skips escalation: Free/Startup at Low
-- [ ] Escalation service executes all 5 actions and reports results
-- [ ] Graceful degradation when an integration fails
-- [ ] WorkflowState tracks each step with timestamps and durations
-- [ ] Timeline events are generated for each pipeline step
+- [x] `orchestrator.processIncident(slackEvent)` executes the full pipeline
+- [x] AI pipeline returns structured `AIDecision` matching the schema
+- [x] Triage correctly escalates: Enterprise at Medium+, all customers at Critical
+- [x] Triage correctly skips escalation: Free/Startup at Low
+- [x] Escalation service executes all 5 actions and reports results
+- [x] Graceful degradation when an integration fails
+- [x] WorkflowState tracks each step with timestamps and durations
+- [x] Timeline events are generated for each pipeline step
 
 ### Estimated Time
 **2.5 hours**

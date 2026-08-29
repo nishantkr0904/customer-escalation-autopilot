@@ -328,7 +328,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 16 — Build AI Pipeline Service
+### Step 16 — Build AI Pipeline Service ✅
 
 **Deliverables:**
 - `src/lib/services/ai-pipeline.ts`
@@ -350,7 +350,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 17 — Build Triage Service
+### Step 17 — Build Triage Service ✅
 
 **Deliverables:**
 - `src/lib/services/triage.ts`
@@ -380,7 +380,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 18 — Build Escalation Service
+### Step 18 — Build Escalation Service ✅
 
 **Deliverables:**
 - `src/lib/services/escalation.ts`
@@ -406,7 +406,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 19 — Build Orchestrator Service
+### Step 19 — Build Orchestrator Service ✅
 
 **Deliverables:**
 - `src/lib/services/orchestrator.ts`
