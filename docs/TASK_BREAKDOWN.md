@@ -746,7 +746,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 39 — Build New Incident Form
+### Step 39 — Build New Incident Form ✅
 
 **Deliverables:**
 - `src/components/incidents/new-incident-form.tsx`

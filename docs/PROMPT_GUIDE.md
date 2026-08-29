@@ -1014,7 +1014,7 @@ Built the Service Health Dashboard at `src/app/health/page.tsx` displaying an ov
 
 ---
 
-## Prompt 10: New Incident Form & Demo Flow
+## Prompt 10: New Incident Form & Demo Flow ✅
 
 ### Purpose
 Build the incident creation form with demo presets and wire up the complete demo flow.
@@ -1083,15 +1083,20 @@ The form should be beautiful — this is the primary interaction for the hackath
 - Smooth submission → redirect → animation flow
 
 ### Validation Checklist
-- [ ] Form renders with all fields
-- [ ] Demo scenario dropdown pre-fills form fields
-- [ ] Form validation works (required fields)
-- [ ] Submit creates incident and redirects to workflow
-- [ ] Customer email autocomplete shows known customers
-- [ ] Form is accessible from Dashboard, Workflow, and Incidents pages
-- [ ] Loading state displays during submission
-- [ ] Error state displays on failure
-- [ ] Full demo flow works: form → submit → workflow → detail
+- [x] Form renders with all fields
+- [x] Demo scenario dropdown pre-fills form fields
+- [x] Form validation works (required fields)
+- [x] Submit creates incident and redirects to workflow
+- [x] Customer email autocomplete shows known customers
+- [x] Form is accessible from Dashboard, Workflow, and Incidents pages
+- [x] Loading state displays during submission
+- [x] Error state displays on failure
+- [x] Full demo flow works: form → submit → workflow → detail
+
+---
+
+*Implementation Note (Milestone 10):*
+Built `src/components/incidents/new-incident-form.tsx` with customer email input + autocomplete suggestions from known mock dataset (`customers.json`), incident description text area, source dropdown (`Slack` / `Manual`), and a pre-configured demo scenario preset selector (`Critical Enterprise`, `High SMB`, `Medium SMB`, `Low Startup`). Wired form into Dashboard page quick actions (`src/components/dashboard/quick-actions.tsx`) and Workflow page header button (`src/app/workflow/page.tsx`) via clean modal dialog overlays. Upon form submit, sends payload to `POST /api/incidents` and redirects to `/workflow?incident=[id]` showing live step-by-step pipeline execution. Wrapped `useSearchParams()` in a `<Suspense>` boundary to guarantee static build compatibility. Verified with `npm run lint`, `npx tsc --noEmit`, and `npm run build`.
 
 ---
 

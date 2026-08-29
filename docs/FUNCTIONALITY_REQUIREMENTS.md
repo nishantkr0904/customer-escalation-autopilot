@@ -12,7 +12,7 @@ These are non-negotiable for a functional hackathon demo.
 
 ---
 
-### MH-01: Incident Intake via Form
+### MH-01: Incident Intake via Form ✅
 
 **Description:**
 A user can create a new incident by filling out a form with customer email and incident description. The form drives the demo experience.
@@ -375,7 +375,7 @@ Timeline clearly communicates the progression of an incident through the pipelin
 
 ---
 
-### SH-05: Demo Scenario Presets
+### SH-05: Demo Scenario Presets ✅
 
 **Description:**
 Pre-configured incident scenarios that can be loaded into the form for instant demo runs.

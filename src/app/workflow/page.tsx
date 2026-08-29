@@ -1,18 +1,23 @@
 'use client'
 
-import React, { useCallback, useEffect, useState } from 'react'
-import Link from 'next/link'
+import React, { Suspense, useCallback, useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import { Incident } from '@/lib/types'
 import { PipelineView } from '@/components/workflow/pipeline-view'
+import { NewIncidentForm } from '@/components/incidents/new-incident-form'
 
-export default function WorkflowPage() {
+function WorkflowPageContent() {
+  const searchParams = useSearchParams()
+  const urlIncidentId = searchParams.get('incident')
+
   const [incidents, setIncidents] = useState<Incident[]>([])
   const [selectedId, setSelectedSelectedId] = useState<string>('')
   const [activeIncident, setActiveIncident] = useState<Incident | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [showModal, setShowModal] = useState(false)
 
   // Fetch list of incidents for dropdown selector
   const fetchIncidentsList = useCallback(async () => {
@@ -22,14 +27,17 @@ export default function WorkflowPage() {
       const data = await res.json()
       if (data.incidents && data.incidents.length > 0) {
         setIncidents(data.incidents)
-        // Default to first incident if none selected
-        setSelectedSelectedId((prev) => (prev ? prev : data.incidents[0].id))
+        // Default to urlParam > existing selected > first incident
+        setSelectedSelectedId((prev) => {
+          if (urlIncidentId) return urlIncidentId
+          return prev ? prev : data.incidents[0].id
+        })
       }
     } catch (err: unknown) {
       const errorMsg = err instanceof Error ? err.message : String(err)
       setError(errorMsg)
     }
-  }, [])
+  }, [urlIncidentId])
 
   // Fetch single active incident workflow state
   const fetchActiveIncident = useCallback(async (id: string) => {
@@ -54,6 +62,13 @@ export default function WorkflowPage() {
   useEffect(() => {
     fetchIncidentsList()
   }, [fetchIncidentsList])
+
+  // Sync urlIncidentId if provided
+  useEffect(() => {
+    if (urlIncidentId) {
+      setSelectedSelectedId(urlIncidentId)
+    }
+  }, [urlIncidentId])
 
   // When selected incident changes
   useEffect(() => {
@@ -99,7 +114,7 @@ export default function WorkflowPage() {
                 id="incident-select"
                 value={selectedId}
                 onChange={(e) => setSelectedSelectedId(e.target.value)}
-                className="bg-slate-900 border border-slate-700/80 rounded-lg px-3 py-1.5 text-xs text-slate-200 font-medium focus:outline-none focus:border-indigo-500 max-w-[220px] truncate"
+                className="bg-slate-900 border border-slate-700/80 rounded-lg px-3 py-1.5 text-xs text-slate-200 font-medium focus:outline-none focus:border-indigo-500 max-w-[220px] truncate cursor-pointer"
               >
                 {incidents.map((inc) => (
                   <option key={inc.id} value={inc.id}>
@@ -110,11 +125,9 @@ export default function WorkflowPage() {
             </div>
           )}
 
-          <Link href="/incidents">
-            <Button variant="primary" size="sm">
-              ⚡ Process New Incident
-            </Button>
-          </Link>
+          <Button variant="primary" size="sm" onClick={() => setShowModal(true)}>
+            ⚡ Process New Incident
+          </Button>
         </div>
       </div>
 
@@ -145,8 +158,49 @@ export default function WorkflowPage() {
           <p className="text-xs text-slate-400">
             No incident workflows available to display. Process a new incident to see the live pipeline.
           </p>
+          <Button variant="primary" size="sm" onClick={() => setShowModal(true)}>
+            Process New Incident
+          </Button>
+        </div>
+      )}
+
+      {/* Modal Dialog Overlay */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
+          <div className="glass-panel rounded-xl max-w-lg w-full p-6 shadow-glass border border-slate-700/80 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
+              <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
+                <span>⚡</span>
+                <span>Process New Incident Report</span>
+              </h3>
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-slate-400 hover:text-slate-200 text-lg leading-none font-bold p-1"
+              >
+                ✕
+              </button>
+            </div>
+            <NewIncidentForm onClose={() => setShowModal(false)} />
+          </div>
         </div>
       )}
     </div>
+  )
+}
+
+export default function WorkflowPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="space-y-4">
+          <Skeleton variant="card" height="120px" width="100%" />
+          {[...Array(5)].map((_, i) => (
+            <Skeleton key={i} variant="card" height="64px" width="100%" />
+          ))}
+        </div>
+      }
+    >
+      <WorkflowPageContent />
+    </Suspense>
   )
 }
