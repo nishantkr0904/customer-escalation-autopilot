@@ -10,7 +10,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 1 — Initialize Next.js Project
+### Step 1 — Initialize Next.js Project ✅
 
 **Deliverables:**
 - Next.js 14 project with TypeScript and Tailwind CSS
@@ -29,7 +29,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 2 — Configure Tailwind Design Tokens
+### Step 2 — Configure Tailwind Design Tokens ✅
 
 **Deliverables:**
 - Custom color palette (dark theme, severity colors, status colors)
@@ -49,7 +49,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 3 — Build Application Shell
+### Step 3 — Build Application Shell ✅
 
 **Deliverables:**
 - `src/components/layout/app-shell.tsx` — main wrapper
@@ -69,7 +69,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 4 — Build UI Primitives
+### Step 4 — Build UI Primitives ✅
 
 **Deliverables:**
 - `src/components/ui/badge.tsx` — severity and status variants
