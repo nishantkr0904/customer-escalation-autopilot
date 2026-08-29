@@ -441,7 +441,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 20 — Implement Slack Webhook Route
+### Step 20 — Implement Slack Webhook Route ✅
 
 **Deliverables:**
 - `src/app/api/webhook/slack/route.ts`
@@ -456,7 +456,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 21 — Implement Incidents API Routes
+### Step 21 — Implement Incidents API Routes ✅
 
 **Deliverables:**
 - `src/app/api/incidents/route.ts` — GET list + POST create
@@ -474,7 +474,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 22 — Implement Escalate Route
+### Step 22 — Implement Escalate Route ✅
 
 **Deliverables:**
 - `src/app/api/escalate/route.ts`
@@ -489,7 +489,7 @@ An ordered task list covering every step from an empty repository to a finished 
 
 ---
 
-### Step 23 — Implement Health Route
+### Step 23 — Implement Health Route ✅
 
 **Deliverables:**
 - `src/app/api/health/route.ts`

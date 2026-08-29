@@ -178,7 +178,7 @@ Build the core business logic: the AI pipeline service (Gemini integration with 
 
 ---
 
-## Milestone 5: API Routes
+## Milestone 5: API Routes ✅
 
 ### Objective
 Create all Next.js API routes that expose the service layer to the frontend.
@@ -200,14 +200,14 @@ Create all Next.js API routes that expose the service layer to the frontend.
 - Error responses follow consistent format
 
 ### Acceptance Criteria
-- [ ] `POST /api/webhook/slack` accepts SlackEvent and returns 202 with incident ID
-- [ ] `GET /api/incidents` returns list of incidents with optional filtering
-- [ ] `POST /api/incidents` creates and processes a new incident
-- [ ] `GET /api/incidents/[id]` returns full incident detail
-- [ ] `POST /api/escalate` triggers escalation for an incident
-- [ ] `GET /api/health` returns health status for all 8 services
-- [ ] All routes return consistent error format on failure
-- [ ] Routes can be tested with `curl` or Postman
+- [x] `POST /api/webhook/slack` accepts SlackEvent and returns 202 with incident ID
+- [x] `GET /api/incidents` returns list of incidents with optional filtering
+- [x] `POST /api/incidents` creates and processes a new incident
+- [x] `GET /api/incidents/[id]` returns full incident detail
+- [x] `POST /api/escalate` triggers escalation for an incident
+- [x] `GET /api/health` returns health status for all 8 services
+- [x] All routes return consistent error format on failure
+- [x] Routes can be tested with `curl` or Postman
 
 ### Estimated Time
 **1.5 hours**
